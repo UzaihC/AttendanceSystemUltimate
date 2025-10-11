@@ -1,0 +1,43 @@
+﻿@page
+@model AttendanceSystem.Pages.Visitors.AddVisitorModel
+@{
+    ViewData["Title"] = "Visitor Form";
+}
+
+<h2 class="text-center mb-4">Visitor Information Form</h2>
+
+<form method="post" class="border rounded p-4 shadow-sm mx-auto" style="max-width: 500px;">
+    <div class="form-group mb-3">
+        <label asp-for="Visitor.FullName" class="form-label">Full Name</label>
+        <input asp-for="Visitor.FullName" class="form-control" placeholder="Enter your full name" />
+        <span asp-validation-for="Visitor.FullName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Visitor.VisitDate" class="form-label">Date</label>
+        <input asp-for="Visitor.VisitDate" class="form-control" type="date" readonly />
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Visitor.Office" class="form-label">Office to Visit</label>
+        <select asp-for="Visitor.Office" class="form-select">
+            <option value="">-- Select Office --</option>
+            <option value="Registrar's Office">Registrar's Office</option>
+            <option value="Guidance Office">Guidance Office</option>
+            <option value="Office of Student Affairs">Office of Student Affairs</option>
+        </select>
+        <span asp-validation-for="Visitor.Office" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Visitor.Purpose" class="form-label">Purpose</label>
+        <textarea asp-for="Visitor.Purpose" class="form-control" rows="3" placeholder="Enter your purpose of visit"></textarea>
+        <span asp-validation-for="Visitor.Purpose" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">Submit</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,27 @@
+﻿@page
+@model AttendanceSystem.Pages.Admin.LoginModel
+@{
+    ViewData["Title"] = "Admin Login";
+}
+
+<h2 style="text-align:center; color:navy;">Admin Login</h2>
+
+<form method="post" style="max-width:400px; margin:auto; margin-top:40px;">
+    <div class="form-group mb-3">
+        <label>Username</label>
+        <input asp-for="Input.Username" class="form-control" />
+    </div>
+    <div class="form-group mb-3">
+        <label>Password</label>
+        <input asp-for="Input.Password" type="password" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-dark w-100">Login</button>
+
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="text-danger mt-3">@Model.ErrorMessage</div>
+    }
+</form>
+
+

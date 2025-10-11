@@ -1,0 +1,38 @@
+﻿@page
+@model AttendanceSystem.Pages.Visitors.VisitorsListModel
+
+@{
+    ViewData["Title"] = "Visitors List";
+}
+
+<h1>Visitors List</h1>
+
+@if (Model.Visitors == null || !Model.Visitors.Any())
+{
+    <p style="color:gray;">No visitors found.</p>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Contact Number</th>
+                <th>Purpose</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var visitor in Model.Visitors)
+            {
+                <tr>
+                    <td>@visitor.FullName</td>
+                    <td>@visitor.VisitDate/td>
+                    <td>@visitor.Office/td>
+                    <td>@visitor.Purpose</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<a asp-page="./AddVisitor" class="btn btn-primary mt-2">Add New Visitor</a>

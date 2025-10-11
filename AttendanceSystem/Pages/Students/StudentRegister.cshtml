@@ -1,0 +1,36 @@
+﻿@page
+@model AttendanceSystem.Pages.Students.StudentRegisterModel
+@{
+    ViewData["Title"] = "Student Register";
+}
+
+<h2 style="text-align:center; color:navy;">Student Registration</h2>
+
+<form method="post" style="max-width:400px; margin:auto; margin-top:40px;">
+    <div class="form-group mb-3">
+        <label>Full Name</label>
+        <input asp-for="Input.FullName" class="form-control" />
+    </div>
+    <div class="form-group mb-3">
+        <label>Email</label>
+        <input asp-for="Input.Email" class="form-control" />
+    </div>
+    <div class="form-group mb-3">
+        <label>Student Number</label>
+        <input asp-for="Input.StudentNumber" class="form-control" />
+    </div>
+    <div class="form-group mb-3">
+        <label>Password</label>
+        <input asp-for="Input.Password" type="password" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-success w-100">Register</button>
+
+    @if (!string.IsNullOrEmpty(Model.Message))
+    {
+        <div class="text-success mt-3 text-center">
+            @Model.Message <br />
+            <a asp-page="/Students/StudentLogin" class="text-primary fw-bold">Log in here</a>
+        </div>
+    }
+</form>

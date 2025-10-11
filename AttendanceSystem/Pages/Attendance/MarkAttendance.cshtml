@@ -1,0 +1,76 @@
+﻿@page
+@model AttendanceSystem.Pages.Attendance.MarkAttendanceModel
+@{
+    ViewData["Title"] = "Mark Attendance";
+}
+
+<h1 class="text-center text-primary">Student Attendance</h1>
+
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <div class="alert alert-info mt-3">@Model.Message</div>
+}
+
+<!-- ================= Add New Student Section ================= -->
+<section class="mt-4">
+    <h3>Add New Student</h3>
+    <form method="post" asp-page-handler="AddStudent">
+        <div class="row">
+            <div class="col-md-3">
+                <label asp-for="NewStudent.StudentNumber" class="form-label">Student Number</label>
+                <input asp-for="NewStudent.StudentNumber" class="form-control" required />
+            </div>
+            <div class="col-md-5">
+                <label asp-for="NewStudent.FullName" class="form-label">Full Name</label>
+                <input asp-for="NewStudent.FullName" class="form-control" required />
+            </div>
+            <div class="col-md-2 align-self-end">
+                <button type="submit" class="btn btn-success w-100">Add Student</button>
+            </div>
+        </div>
+    </form>
+</section>
+
+<hr class="my-4" />
+
+<!-- ================= Mark Attendance Section ================= -->
+<section>
+    <h3>Mark Attendance</h3>
+
+    @if (!Model.Students.Any())
+    {
+        <p class="text-muted">No students found. Add a student above first.</p>
+    }
+    else
+    {
+        <form method="post" asp-page-handler="SaveAttendance">
+            <table class="table table-bordered table-hover mt-3">
+                <thead class="table-primary">
+                    <tr>
+                        <th>Student Number</th>
+                        <th>Full Name</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var s in Model.Students)
+                    {
+                        <tr>
+                            <td>@s.StudentNumber</td>
+                            <td>@s.FullName</td>
+                            <td>
+                                <select class="form-select" name="AttendanceStatuses[@s.StudentId]">
+                                    <option value="">-- Select --</option>
+                                    <option value="Present">Present</option>
+                                    <option value="Absent">Absent</option>
+                                </select>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <button type="submit" class="btn btn-primary mt-2">Save Attendance</button>
+        </form>
+    }
+</section>

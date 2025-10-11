@@ -1,0 +1,29 @@
+﻿@page
+@model AttendanceSystem.Pages.Admin.ViewVisitorLogsModel
+@{
+    ViewData["Title"] = "Visitor Logs";
+}
+
+<h2>Visitor Logs</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Purpose</th>
+            <th>Visit Date</th>
+            <th>Viewed At</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var log in Model.VisitorLogs)
+        {
+            <tr>
+                <td>@log.Visitors.FullName</td>
+                <td>@log.Visitors.Purpose</td>
+                <td>@log.Visitors.VisitDate.ToString("g")</td>
+                <td>@log.ViewedAt.ToString("g")</td>
+            </tr>
+        }
+    </tbody>
+</table>

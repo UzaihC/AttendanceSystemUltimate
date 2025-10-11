@@ -1,0 +1,19 @@
+﻿@page
+@model AttendanceSystem.Pages.Admin.AdminDashboardModel
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<h2 class="text-center text-primary mb-4">Admin Dashboard</h2>
+
+<div class="d-flex justify-content-center gap-4">
+    <!-- Navigate to Mark Attendance page -->
+    <a asp-page="/Attendance/MarkAttendance" class="btn btn-primary btn-lg">
+        Mark Attendance
+    </a>
+
+    <!-- Navigate to Visitor Logs page -->
+    <a asp-page="/Visitors/ViewVisitorLogs" class="btn btn-info btn-lg">
+        View Visitor Logs
+    </a>
+</div>

@@ -1,0 +1,27 @@
+﻿@page
+@model AttendanceSystem.Pages.Students.StudentsListModel
+@{
+    ViewData["Title"] = "Student List";
+}
+
+<h1>Student List</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Student Number</th>
+            <th>Full Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model.Students)
+        {
+            <tr>
+                <td>@s.StudentNumber</td>
+                <td>@s.FullName</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-page="./AddStudent" class="btn btn-primary mt-2">Add New Student</a>
