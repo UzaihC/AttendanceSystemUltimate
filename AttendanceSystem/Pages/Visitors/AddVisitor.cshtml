@@ -4,39 +4,91 @@
     ViewData["Title"] = "Visitor Form";
 }
 
+<style>
+    body {
+        background: linear-gradient(135deg, #0b6623 0%, #ffffff 50%, #d4af37 100%);
+        min-height: 100vh;
+        padding-top: 40px;
+        font-family: "Segoe UI", sans-serif;
+    }
+
+    .form-container {
+        background: rgba(255, 255, 255, 0.9);
+        border: 2px solid #d4af37; /* gold border */
+        border-radius: 15px;
+        padding: 30px;
+        max-width: 550px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    h2 {
+        color: #0b6623; /* deep green */
+        font-weight: 700;
+        text-shadow: 1px 1px 1px #fff;
+    }
+
+    label {
+        font-weight: 600;
+        color: #0b6623;
+    }
+
+    .btn-primary {
+        background-color: #0b6623 !important;
+        border-color: #0b6623 !important;
+        font-weight: 600;
+    }
+
+        .btn-primary:hover {
+            background-color: #094d1a !important;
+            border-color: #094d1a !important;
+        }
+
+    .form-control, .form-select, textarea {
+        border: 1px solid #d4af37 !important; /* gold outline */
+        box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+        .form-control:focus, .form-select:focus, textarea:focus {
+            border-color: #0b6623 !important;
+            box-shadow: 0 0 5px rgba(11,102,35,0.4);
+        }
+</style>
+
 <h2 class="text-center mb-4">Visitor Information Form</h2>
 
-<form method="post" class="border rounded p-4 shadow-sm mx-auto" style="max-width: 500px;">
-    <div class="form-group mb-3">
-        <label asp-for="Visitor.FullName" class="form-label">Full Name</label>
-        <input asp-for="Visitor.FullName" class="form-control" placeholder="Enter your full name" />
-        <span asp-validation-for="Visitor.FullName" class="text-danger"></span>
-    </div>
+<div class="mx-auto form-container">
+    <form method="post">
+        <div class="form-group mb-3">
+            <label asp-for="Visitor.FullName" class="form-label">Full Name</label>
+            <input asp-for="Visitor.FullName" class="form-control" placeholder="Enter your full name" />
+            <span asp-validation-for="Visitor.FullName" class="text-danger"></span>
+        </div>
 
-    <div class="form-group mb-3">
-        <label asp-for="Visitor.VisitDate" class="form-label">Date</label>
-        <input asp-for="Visitor.VisitDate" class="form-control" type="date" readonly />
-    </div>
+        <div class="form-group mb-3">
+            <label asp-for="Visitor.VisitDate" class="form-label">Date</label>
+            <input asp-for="Visitor.VisitDate" class="form-control" type="date" readonly />
+        </div>
 
-    <div class="form-group mb-3">
-        <label asp-for="Visitor.Office" class="form-label">Office to Visit</label>
-        <select asp-for="Visitor.Office" class="form-select">
-            <option value="">-- Select Office --</option>
-            <option value="Registrar's Office">Registrar's Office</option>
-            <option value="Guidance Office">Guidance Office</option>
-            <option value="Office of Student Affairs">Office of Student Affairs</option>
-        </select>
-        <span asp-validation-for="Visitor.Office" class="text-danger"></span>
-    </div>
+        <div class="form-group mb-3">
+            <label asp-for="Visitor.Office" class="form-label">Office to Visit</label>
+            <select asp-for="Visitor.Office" class="form-select">
+                <option value="">-- Select Office --</option>
+                <option value="Registrar's Office">Registrar's Office</option>
+                <option value="Guidance Office">Guidance Office</option>
+                <option value="Office of Student Affairs">Office of Student Affairs</option>
+            </select>
+            <span asp-validation-for="Visitor.Office" class="text-danger"></span>
+        </div>
 
-    <div class="form-group mb-3">
-        <label asp-for="Visitor.Purpose" class="form-label">Purpose</label>
-        <textarea asp-for="Visitor.Purpose" class="form-control" rows="3" placeholder="Enter your purpose of visit"></textarea>
-        <span asp-validation-for="Visitor.Purpose" class="text-danger"></span>
-    </div>
+        <div class="form-group mb-3">
+            <label asp-for="Visitor.Purpose" class="form-label">Purpose</label>
+            <textarea asp-for="Visitor.Purpose" class="form-control" rows="3" placeholder="Enter your purpose of visit"></textarea>
+            <span asp-validation-for="Visitor.Purpose" class="text-danger"></span>
+        </div>
 
-    <button type="submit" class="btn btn-primary w-100">Submit</button>
-</form>
+        <button type="submit" class="btn btn-primary w-100">Submit</button>
+    </form>
+</div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

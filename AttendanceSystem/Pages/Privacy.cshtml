@@ -3,6 +3,158 @@
 @{
     ViewData["Title"] = "Privacy Policy";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<style>
+    .privacy-container {
+        max-width: 900px;
+        margin: 30px auto;
+        padding: 20px 30px;
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        height: 70vh; /* Scrollable height */
+        overflow-y: auto;
+        font-family: "Segoe UI", Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+    }
+
+        .privacy-container h1 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+    .privacy-section {
+        margin-bottom: 20px;
+    }
+
+        .privacy-section h2 {
+            font-size: 1.2rem;
+            color: #1a73e8;
+            margin-bottom: 8px;
+        }
+
+        .privacy-section p,
+        .privacy-section ul {
+            margin: 0 0 10px 0;
+            padding-left: 15px;
+        }
+
+    ul {
+        list-style-type: disc;
+    }
+
+    .contact-info p {
+        margin: 2px 0;
+    }
+
+    /* Scrollbar styling (optional, for modern browsers) */
+    .privacy-container::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .privacy-container::-webkit-scrollbar-thumb {
+        background-color: #ccc;
+        border-radius: 10px;
+    }
+
+        .privacy-container::-webkit-scrollbar-thumb:hover {
+            background-color: #999;
+        }
+</style>
+
+<div class="privacy-container">
+    <h1>@ViewData["Title"]</h1>
+    <p><strong>Effective Date:</strong> 10/23/2025</p>
+
+    <div class="privacy-section">
+        <h2>1. Introduction</h2>
+        <p>
+            This Privacy Policy describes how the Attendance/Visitor Log System (“we,” “our,” or “the system”) collects, uses, stores, and protects personal information obtained from visitors. We are committed to ensuring that your privacy is protected and that your personal information is handled responsibly and securely.
+        </p>
+    </div>
+
+    <div class="privacy-section">
+        <h2>2. Information We Collect</h2>
+        <ul>
+            <li>Full name</li>
+            <li>Contact details (e.g., phone number, email address)</li>
+            <li>Purpose of visit</li>
+            <li>Person or department being visited</li>
+            <li>Date and time of entry</li>
+        </ul>
+    </div>
+
+    <div class="privacy-section">
+        <h2>3. How We Use the Information</h2>
+        <ul>
+            <li>Recording and managing visitor entries and exits</li>
+            <li>Ensuring the safety and security of our premises</li>
+            <li>Contact tracing and emergency response (if required)</li>
+            <li>Verifying identity and authorization of visitors</li>
+            <li>Generating reports for administrative and security purposes</li>
+        </ul>
+        <p>We do not sell, rent, or share your personal data with third parties for marketing or unrelated purposes.</p>
+    </div>
+
+    <div class="privacy-section">
+        <h2>4. Data Storage and Retention</h2>
+        <p>
+            All visitor data is securely stored in our database or physical logbooks. We retain personal information only as long as necessary to fulfill the purposes stated in this policy or as required by law. After the retention period, records will be securely deleted or disposed of.
+        </p>
+    </div>
+
+    <div class="privacy-section">
+        <h2>5. Data Security</h2>
+        <p>We take appropriate technical and organizational measures to safeguard visitor data against:</p>
+        <ul>
+            <li>Unauthorized access</li>
+            <li>Accidental loss or destruction</li>
+            <li>Alteration or disclosure</li>
+        </ul>
+        <p>Only authorized personnel have access to visitor records, and all data is stored in a secure environment.</p>
+    </div>
+
+    <div class="privacy-section">
+        <h2>6. Access and Correction</h2>
+        <p>
+            Visitors may request access to their personal information recorded in the system and request corrections if the information is inaccurate or incomplete. Requests can be made by contacting the system administrator or data protection officer at Colegio de Montalban registrar.
+        </p>
+    </div>
+
+    <div class="privacy-section">
+        <h2>7. Legal Basis for Processing</h2>
+        <ul>
+            <li>Legitimate interests in maintaining the safety and security of our premises</li>
+            <li>Compliance with legal or regulatory obligations</li>
+        </ul>
+    </div>
+
+    <div class="privacy-section">
+        <h2>8. Third-Party Sharing</h2>
+        <p>We may disclose visitor information only when:</p>
+        <ul>
+            <li>Required by law or legal process</li>
+            <li>Necessary to protect the safety, rights, or property of the organization or other individuals</li>
+            <li>Authorized by the visitor for specific purposes</li>
+        </ul>
+    </div>
+
+    <div class="privacy-section">
+        <h2>9. Updates to This Policy</h2>
+        <p>
+            We may update this Privacy Policy from time to time. Any changes will be posted with an updated “Effective Date.” Continued use of the system after updates constitutes acceptance of the revised policy.
+        </p>
+    </div>
+
+    <div class="privacy-section contact-info">
+        <h2>10. Contact Information</h2>
+        <p>If you have questions or concerns about this Privacy Policy or how your data is handled, please contact:</p>
+        <p><strong>Data Protection Officer / System Administrator</strong></p>
+        <p>Kim Camille Manggay</p>
+        <p>Phone: 09598963255</p>
+        <p>Colegio Young Stunnas</p>
+    </div>
+</div>

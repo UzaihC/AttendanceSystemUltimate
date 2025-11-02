@@ -4,24 +4,37 @@
     ViewData["Title"] = "Student List";
 }
 
-<h1>Student List</h1>
+<div class="student-list-container">
+    <div class="student-list-card">
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Student Number</th>
-            <th>Full Name</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var s in Model.Students)
-        {
-            <tr>
-                <td>@s.StudentNumber</td>
-                <td>@s.FullName</td>
-            </tr>
-        }
-    </tbody>
-</table>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h1 class="mb-0">Student List</h1>
 
-<a asp-page="./AddStudent" class="btn btn-primary mt-2">Add New Student</a>
+            <form method="get" class="d-flex search-box">
+                <input type="text" name="searchTerm" class="form-control me-2"
+                       placeholder="Search student..." value="@Model.SearchTerm" />
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+        </div>
+
+        <table class="table table-bordered student-table">
+            <thead>
+                <tr>
+                    <th>Student Number</th>
+                    <th>Full Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var s in Model.Students)
+                {
+                    <tr>
+                        <td>@s.StudentNumber</td>
+                        <td>@s.FullName</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+

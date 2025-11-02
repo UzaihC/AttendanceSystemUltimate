@@ -4,16 +4,93 @@
     ViewData["Title"] = "Admin Dashboard";
 }
 
-<h2 class="text-center text-primary mb-4">Admin Dashboard</h2>
+<div class="dashboard-container">
+    <h2 class="dashboard-title">Admin Dashboard</h2>
 
-<div class="d-flex justify-content-center gap-4">
-    <!-- Navigate to Mark Attendance page -->
-    <a asp-page="/Attendance/MarkAttendance" class="btn btn-primary btn-lg">
-        Mark Attendance
-    </a>
+    <div class="dashboard-card">
+        <div class="button-group">
+            <a asp-page="/Attendance/MarkAttendance" class="admin-btn primary-btn">
+                Mark Attendance
+            </a>
 
-    <!-- Navigate to Visitor Logs page -->
-    <a asp-page="/Visitors/ViewVisitorLogs" class="btn btn-info btn-lg">
-        View Visitor Logs
-    </a>
+            <a asp-page="/Visitors/ViewVisitorLogs" class="admin-btn secondary-btn">
+                View Visitor Logs
+            </a>
+        </div>
+    </div>
 </div>
+
+<style>
+    /* Page Container */
+    .dashboard-container {
+        max-width: 700px;
+        margin: 50px auto;
+        text-align: center;
+        font-family: "Segoe UI", sans-serif;
+    }
+
+    /* Title Style */
+    .dashboard-title {
+        color: #12263f; /* Deep navy */
+        font-weight: 800;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    /* Card Background */
+    .dashboard-card {
+        background: white;
+        padding: 40px 30px;
+        border-radius: 12px;
+        border: 2px solid #0b1a2e; /* Strong navy border */
+        box-shadow: 0 5px 18px rgba(0, 0, 0, 0.18);
+    }
+
+    /* Button Group */
+    .button-group {
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        flex-wrap: wrap;
+    }
+
+    /* Base Button Style */
+    .admin-btn {
+        display: inline-block;
+        padding: 15px 30px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 10px;
+        text-decoration: none;
+        transition: 0.3s ease-in-out;
+    }
+
+    /* Primary Dark Button */
+    .primary-btn {
+        background: #0b1a2e; /* Deep navy */
+        color: white;
+        border: 2px solid #0b1a2e;
+    }
+
+        .primary-btn:hover {
+            background: #13284a;
+            border-color: #13284a;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+        }
+
+    /* Secondary Button with Gold Accent */
+    .secondary-btn {
+        background: #c89b3c; /* Gold */
+        color: #1a1a1a;
+        border: 2px solid #b78b35;
+    }
+
+        .secondary-btn:hover {
+            background: #b78b35;
+            border-color: #a27a2e;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+        }
+</style>

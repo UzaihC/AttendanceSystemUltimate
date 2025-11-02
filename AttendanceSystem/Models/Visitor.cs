@@ -23,5 +23,7 @@ namespace AttendanceSystem.Models
         [Required]
         [StringLength(255)]
         public string Purpose { get; set; } = string.Empty;
+
+
     }
 }

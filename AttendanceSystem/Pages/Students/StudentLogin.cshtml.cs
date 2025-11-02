@@ -41,7 +41,7 @@ namespace AttendanceSystem.Pages.Students
             }
 
             // ✅ Successful login
-            return RedirectToPage("/Students/StudentDashboard");
+            return RedirectToPage("/Students/StudentList");
         }
 
         public class LoginInput

@@ -1,7 +1,9 @@
 using AttendanceSystem.Data;
+using AttendanceSystem.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace AttendanceSystem.Pages.Students
 {
@@ -14,11 +16,22 @@ namespace AttendanceSystem.Pages.Students
             _context = context;
         }
 
-        public List<AttendanceSystem.Models.Student> Students { get; set; } = new();
+        public List<Student> Students { get; set; } = new List<Student>();
 
-        public async Task OnGetAsync()
+        [BindProperty(SupportsGet = true)]
+        public string SearchTerm { get; set; } = string.Empty;
+
+        public void OnGet()
         {
-            Students = await _context.Students.ToListAsync();
+            var query = _context.Students.AsQueryable();
+
+            if (!string.IsNullOrEmpty(SearchTerm))
+            {
+                query = query.Where(s => s.FullName.Contains(SearchTerm) || s.StudentNumber.Contains(SearchTerm));
+            }
+
+            Students = query.ToList();
         }
     }
+
 }

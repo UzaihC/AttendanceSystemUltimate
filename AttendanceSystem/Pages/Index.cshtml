@@ -4,31 +4,249 @@
     ViewData["Title"] = "Attendance System";
 }
 
-<div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:90vh;">
-    <div style="text-align:center; margin-bottom:40px;">
-        <h1 style="color:navy;">Welcome to Attendance System</h1>
-        <h3 style="color:gray;">Proceed as?</h3>
-    </div>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
-    <div style="display:flex; gap:40px;">
+<style>
+
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+        background: linear-gradient(120deg, #00640088, #32cd3288, #7CFC0088), url('/image/cdm.jpg') no-repeat center center fixed;
+        background-size: cover;
+
+        animation: gradientMove 12s ease infinite;
+        background-blend-mode: overlay;
+    }
+
+        @@keyframes gradientMove 
+            {
+                 0%
+                 {
+                     background-position: 0% 50%;
+                 }
+                 50%
+                 {
+                    background-position: 100% 50%;
+                 }
+                 100%
+                 {
+                    background-position: 0% 50%;
+                 }
+        }
+
+    .logo {
+        position: absolute;
+        top: 20px;
+        left: 30px;
+    }
+
+
+    .overlay {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        text-align: center;
+        color: white;
+        padding: 20px;
+    }
+
+    h1 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 45px;
+        font-weight: 700;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+        margin-bottom: 10px;
+    }
+
+    h3 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 22px;
+        margin-bottom: 40px;
+        text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
+    }
+
+
+    .role-row {
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        gap: 40px;
+        flex-wrap: wrap;
+        width: 100%;
+        max-width: 900px;
+    }
+
+    .role-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border: 1px solid #ccc;
+        border-radius: 12px;
+        padding: 30px;
+        width: 250px;
+        text-align: center;
+        background-color: rgba(255, 255, 255, 0.9);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+        min-height: 150px;
+    }
+
+        .role-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+    h2 {
+        font-family: 'Poppins', sans-serif;
+        margin-bottom: 10px;
+        color: black;
+    }
+
+    p {
+        font-family: 'Poppins', sans-serif;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .btn {
+        padding: 10px;
+        border-radius: 8px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-dark {
+        background-color: #343a40;
+    }
+
+        .btn-dark:hover {
+            background-color: #212529;
+        }
+
+    .btn-primary {
+        background-color: #007bff;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    .btn-success {
+        background-color: #28a745;
+    }
+
+        .btn-success:hover {
+            background-color: #1e7e34;
+        }
+
+
+    @@media (max-width: 768px) {
+        .role-row
+
+    {
+        flex-direction: column;
+    }
+
+    }
+
+
+    .floating-shape {
+        position: absolute;
+        border-radius: 50%;
+        animation: float 12s infinite ease-in-out;
+        z-index: -1;
+    }
+
+    .shape1 {
+        width: 180px;
+        height: 180px;
+        top: 10%;
+        left: 5%;
+        background: rgba(144, 238, 144, 0.35);
+        animation-duration: 18s;
+    }
+
+    .shape2 {
+        width: 250px;
+        height: 250px;
+        bottom: 15%;
+        right: 10%;
+        background: rgba(0, 128, 0, 0.3);
+        animation-duration: 22s;
+    }
+
+    .shape3 {
+        width: 120px;
+        height: 120px;
+        top: 40%;
+        right: 30%;
+        background: rgba(34, 139, 34, 0.35);
+        animation-duration: 16s;
+    }
+
+    @@keyframes float {
+        0%
+
+    {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(20px, -40px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+
+    }
+</style>
+
+
+<div class="logo">
+    <img src="~/image/logo.png" alt="CDM Logo" style="width:80px; border-radius:10px;" />
+</div>
+<div class="floating-shape shape1"></div>
+<div class="floating-shape shape2"></div>
+<div class="floating-shape shape3"></div>
+
+
+<div class="overlay">
+    <h1>Welcome to Attendance System</h1>
+    <h3>Proceed as?</h3>
+
+    <div class="role-row">
         <!-- Admin -->
-        <div style="border:1px solid #ccc; border-radius:12px; padding:30px; width:230px; text-align:center; background-color:#f5f5f5; box-shadow:0 4px 8px rgba(0,0,0,0.1);">
-            <h2 style="color:#2b2b2b;">Admin</h2>
-            <p style="color:gray;">Administrator login</p>
+        <div class="role-card">
+            <div>
+                <h2>Admin</h2>
+                <p>Administrator login</p>
+            </div>
             <a asp-page="/Admin/AdminLogin" class="btn btn-dark" style="width:100%;">Proceed as Admin</a>
         </div>
 
         <!-- Student -->
-        <div style="border:1px solid #ccc; border-radius:12px; padding:30px; width:230px; text-align:center; background-color:#e6f0ff; box-shadow:0 4px 8px rgba(0,0,0,0.1);">
-            <h2 style="color:#003366;">Student</h2>
-            <p style="color:gray;">Login or register as student</p>
+        <div class="role-card">
+            <div>
+                <h2>Student</h2>
+                <p>Login or register as student</p>
+            </div>
             <a asp-page="/Students/StudentLogin" class="btn btn-primary" style="width:100%;">Proceed as Student</a>
         </div>
 
         <!-- Visitor -->
-        <div style="border:1px solid #ccc; border-radius:12px; padding:30px; width:230px; text-align:center; background-color:#f0fff0; box-shadow:0 4px 8px rgba(0,0,0,0.1);">
-            <h2 style="color:darkgreen;">Visitor</h2>
-            <p style="color:gray;">Log your visit</p>
+        <div class="role-card">
+            <div>
+                <h2>Visitor</h2>
+                <p>Log your visit</p>
+            </div>
             <a asp-page="/Visitors/AddVisitor" class="btn btn-success" style="width:100%;">Proceed as Visitor</a>
         </div>
     </div>
