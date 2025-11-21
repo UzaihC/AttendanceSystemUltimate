@@ -1,0 +1,21 @@
+﻿@page
+@model AttendanceSystem.Pages.Students.EditModel
+
+<h2>Edit Student</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="Student.StudentId" />
+
+    <div class="mb-3">
+        <label>Student Number</label>
+        <input asp-for="Student.StudentNumber" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Full Name</label>
+        <input asp-for="Student.FullName" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-warning">Update</button>
+    <a href="/Students/StudentList" class="btn btn-secondary">Cancel</a>
+</form>

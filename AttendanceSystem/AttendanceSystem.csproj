@@ -12,6 +12,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Pages\Students\Component.razor" />
+    <Content Remove="Pages\Students\Create.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.DataAnnotations" Version="2.3.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.9" />

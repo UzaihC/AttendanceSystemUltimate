@@ -7,33 +7,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
-
     body {
         margin: 0;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-        background: linear-gradient(120deg, #00640088, #32cd3288, #7CFC0088), url('/image/cdm.jpg') no-repeat center center fixed;
+        background: linear-gradient(rgba(0, 100, 0, 0.6), rgba(144, 238, 144, 0.6)), url('/image/cdm.jpg') no-repeat center center fixed;
         background-size: cover;
-
-        animation: gradientMove 12s ease infinite;
-        background-blend-mode: overlay;
     }
-
-        @@keyframes gradientMove 
-            {
-                 0%
-                 {
-                     background-position: 0% 50%;
-                 }
-                 50%
-                 {
-                    background-position: 100% 50%;
-                 }
-                 100%
-                 {
-                    background-position: 0% 50%;
-                 }
-        }
 
     .logo {
         position: absolute;
@@ -41,7 +20,7 @@
         left: 30px;
     }
 
-
+    /* Center container */
     .overlay {
         display: flex;
         flex-direction: column;
@@ -57,18 +36,20 @@
         font-family: 'Poppins', sans-serif;
         font-size: 45px;
         font-weight: 700;
-        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+        color: white;
         margin-bottom: 10px;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
     }
 
     h3 {
         font-family: 'Poppins', sans-serif;
         font-size: 22px;
+        color: white;
         margin-bottom: 40px;
         text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
     }
 
-
+    /* Row for the role cards */
     .role-row {
         display: flex;
         justify-content: center;
@@ -99,25 +80,29 @@
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
         }
 
+        .role-card:active {
+            transform: scale(0.95);
+        }
+
     h2 {
         font-family: 'Poppins', sans-serif;
-        margin-bottom: 10px;
         color: black;
+        margin-bottom: 10px;
     }
 
     p {
         font-family: 'Poppins', sans-serif;
-        margin-bottom: 20px;
         color: #333;
+        margin-bottom: 20px;
     }
 
     .btn {
+        border: none;
         padding: 10px;
-        border-radius: 8px;
         font-family: 'Poppins', sans-serif;
         font-weight: 600;
+        border-radius: 8px;
         color: white;
-        border: none;
         cursor: pointer;
         transition: background-color 0.3s ease;
     }
@@ -146,76 +131,17 @@
             background-color: #1e7e34;
         }
 
-
+    /* Responsive layout */
     @@media (max-width: 768px) {
-        .role-row
-
-    {
-        flex-direction: column;
+        .role-row {
+            flex-direction: column;
+            align-items: center;
+        }
     }
 
-    }
-
-
-    .floating-shape {
-        position: absolute;
-        border-radius: 50%;
-        animation: float 12s infinite ease-in-out;
-        z-index: -1;
-    }
-
-    .shape1 {
-        width: 180px;
-        height: 180px;
-        top: 10%;
-        left: 5%;
-        background: rgba(144, 238, 144, 0.35);
-        animation-duration: 18s;
-    }
-
-    .shape2 {
-        width: 250px;
-        height: 250px;
-        bottom: 15%;
-        right: 10%;
-        background: rgba(0, 128, 0, 0.3);
-        animation-duration: 22s;
-    }
-
-    .shape3 {
-        width: 120px;
-        height: 120px;
-        top: 40%;
-        right: 30%;
-        background: rgba(34, 139, 34, 0.35);
-        animation-duration: 16s;
-    }
-
-    @@keyframes float {
-        0%
-
-    {
-        transform: translate(0, 0);
-    }
-
-    50% {
-        transform: translate(20px, -40px);
-    }
-
-    100% {
-        transform: translate(0, 0);
-    }
-
-    }
+    
 </style>
 
-
-<div class="logo">
-    <img src="~/image/logo.png" alt="CDM Logo" style="width:80px; border-radius:10px;" />
-</div>
-<div class="floating-shape shape1"></div>
-<div class="floating-shape shape2"></div>
-<div class="floating-shape shape3"></div>
 
 
 <div class="overlay">

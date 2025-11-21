@@ -1,33 +1,33 @@
-﻿@page
+﻿
+@page
 @model AttendanceSystem.Pages.Visitors.ViewVisitorLogsModel
 @{
     ViewData["Title"] = "Visitor Logs";
 }
 
-<div class="visitor-log-container">
+<div class="page-header">
+    <div class="header-title">CDM Visitor Logs</div>
+    <nav>
+        <a href="#">Home</a> |
+        <a href="#">Privacy</a> |
+        <a href="#">About</a>
+    </nav>
+</div>
+
+<div class="visitor-log-wrapper">
 
     <!-- Sidebar -->
     <aside class="sidebar">
-        <h4>Offices</h4>
-        <ul>
-            <li>
-                <button class="filter-btn active" data-office="Registrar's Office" onclick="filterTable(this.dataset.office, this)">
-                    Registrar's Office
-                </button>
-            </li>
-
-            <li><button class="filter-btn" onclick="filterTable('Guidance Office', this)">Guidance Office</button></li>
-            <li><button class="filter-btn" onclick="filterTable('Office of Student Affairs', this)">Office of Student Affairs</button></li>
-            <li><button class="filter-btn" onclick="filterTable('All', this)">Show All</button></li>
-        </ul>
+        <h3>Offices</h3>
+        <button class="filter-btn active" data-office="Registrar's Office" onclick="filterTable(this.dataset.office, this)">Registrar's Office</button>
+        <button class="filter-btn" onclick="filterTable('Guidance Office', this)">Guidance Office</button>
+        <button class="filter-btn" onclick="filterTable('Office of Student Affairs', this)">Office of Student Affairs</button>
+        <button class="filter-btn" onclick="filterTable('All', this)">Show All</button>
     </aside>
 
     <!-- Main Content -->
-    <main class="main-content">
-        <div class="content-header">
-            <h2>@ViewData["Title"]</h2>
-            <button class="toggle-sidebar-btn" onclick="toggleSidebar()">☰ Offices</button>
-        </div>
+    <main class="main">
+        <h2>@ViewData["Title"]</h2>
 
         @if (Model.Visitors == null || !Model.Visitors.Any())
         {
@@ -35,8 +35,8 @@
         }
         else
         {
-            <table class="table table-bordered" id="visitorTable">
-                <thead class="table-light">
+            <table id="visitorTable">
+                <thead>
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
@@ -46,16 +46,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var visitor in Model.Visitors)
-                    {
-                        <tr>
-                            <td>@visitor.VisitorId</td>
-                            <td>@visitor.FullName</td>
-                            <td>@visitor.VisitDate.ToString("MM/dd/yyyy hh:mm tt")</td>
-                            <td>@visitor.Purpose</td>
-                            <td>@visitor.Office</td>
-                        </tr>
-                    }
+                @foreach (var visitor in Model.Visitors)
+                {
+                    <tr>
+                        <td>@visitor.VisitorId</td>
+                        <td>@visitor.FullName</td>
+                        <td>@visitor.VisitDate.ToString("MM/dd/yyyy hh:mm tt")</td>
+                        <td>@visitor.Purpose</td>
+                        <td>@visitor.Office</td>
+                    </tr>
+                }
                 </tbody>
             </table>
         }
@@ -63,154 +63,124 @@
 </div>
 
 <style>
-    /* Overall container */
-    .visitor-log-container {
-        display: flex;
-        gap: 25px;
-        padding: 20px;
-        background: #f4f6f9;
-        border-radius: 12px;
-        border: 1px solid #ddd;
+    body {
+        background: #f3f8f3;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
     }
 
-    /* Sidebar */
-    .sidebar {
-        width: 230px;
-        background-color: white;
-        padding: 18px;
-        border-radius: 12px;
-        border: 1px solid #e3e3e3;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-        position: sticky;
-        top: 20px;
-        height: fit-content;
-        transition: transform 0.3s ease-in-out;
-    }
-
-        .sidebar h4 {
-            margin-bottom: 12px;
-            font-weight: bold;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 6px;
-        }
-
-        .sidebar ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .sidebar .filter-btn {
-            display: block;
-            width: 100%;
-            text-align: left;
-            background: #f8f9fa;
-            border: 1px solid transparent;
-            padding: 10px;
-            border-radius: 8px;
-            font-size: 15px;
-            cursor: pointer;
-            margin-bottom: 6px;
-            transition: all 0.2s;
-        }
-
-            .sidebar .filter-btn:hover {
-                background-color: #e9ecef;
-            }
-
-            .sidebar .filter-btn.active {
-                background-color: #0d6efd;
-                color: white;
-                font-weight: bold;
-                border-color: #0b5ed7;
-                box-shadow: 0 0 5px rgba(13,110,253,0.5);
-            }
-
-    /* Main content area */
-    .main-content {
-        flex: 1;
-        background: white;
-        padding: 20px;
-        border-radius: 12px;
-        border: 1px solid #e3e3e3;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-    }
-
-    .content-header {
+    .page-header {
+        width: 100%;
+        padding: 15px 40px;
+        background: rgba(0, 90, 0, 0.7);
+        color: white;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 20px;
-        padding-bottom: 10px;
-        border-bottom: 2px solid #dee2e6;
+        font-size: 18px;
     }
 
-    /* Sidebar toggle button */
-    .toggle-sidebar-btn {
-        display: none;
-        background-color: #0d6efd;
+    .page-header a {
         color: white;
+        text-decoration: none;
+        margin: 0 5px;
+    }
+
+    .visitor-log-wrapper {
+        display: flex;
+        padding: 40px;
+        gap: 25px;
+    }
+
+    /* Sidebar Styling */
+    .sidebar {
+        width: 240px;
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        height: fit-content;
+    }
+
+    .sidebar h3 {
+        margin-top: 0;
+        margin-bottom: 15px;
+        color: #004b23;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .sidebar .filter-btn {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 10px;
         border: none;
-        padding: 8px 12px;
-        border-radius: 6px;
-        font-size: 16px;
+        border-radius: 8px;
+        background: #e6e6e6;
         cursor: pointer;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+        text-align: left;
+        font-size: 15px;
+        transition: 0.2s;
     }
 
-    /* Responsive Layout */
-    @@media (max-width: 768px) {
-        .visitor-log-container {
-            flex-direction: column;
-        }
-
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100%;
-            transform: translateX(-100%);
-            z-index: 1000;
-            border-radius: 0;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        }
-
-            .sidebar.show {
-                transform: translateX(0);
-            }
-
-        .toggle-sidebar-btn {
-            display: inline-block;
-        }
+    .sidebar .filter-btn.active {
+        background: #004b23;
+        color: white;
+        font-weight: bold;
     }
 
-    /* Table styling upgrade */
-    table.table {
+    .sidebar .filter-btn:hover {
+        background: #c8e6c9;
+    }
+
+    /* Main Content */
+    .main {
+        flex: 1;
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .main h2 {
+        margin-top: 0;
+        margin-bottom: 20px;
+        color: #004b23;
+        font-size: 26px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
         border-radius: 8px;
         overflow: hidden;
-        border: 1px solid #dee2e6;
     }
 
-        table.table thead {
-            background: #f1f3f5;
-            color: #212529;
-            font-weight: 600;
-        }
+    thead {
+        background: #004b23;
+        color: white;
+    }
 
+    th, td {
+        padding: 12px;
+        border-bottom: 1px solid #ddd;
+        font-size: 14px;
+    }
 
-        table.table tbody tr:hover {
-            background: #f8f9fa;
-        }
+    tr:hover {
+        background: #f1f8f1;
+    }
 </style>
-
 
 <script>
     function filterTable(office, button) {
         const rows = document.querySelectorAll("#visitorTable tbody tr");
-        const normalizedOffice = office.replace(/[\u2019\u2018]/g, "'").toLowerCase();
+        const normalizedOffice = office.replace(/[’‘]/g, "'").toLowerCase();
 
         rows.forEach(row => {
             const officeCell = row.cells[4].innerText.trim();
-            const normalizedCell = officeCell.replace(/[\u2019\u2018]/g, "'").toLowerCase();
+            const normalizedCell = officeCell.replace(/[’‘]/g, "'").toLowerCase();
 
             row.style.display = (office === "All" || normalizedCell === normalizedOffice) ? "" : "none";
         });
@@ -219,4 +189,3 @@
         button.classList.add("active");
     }
 </script>
-

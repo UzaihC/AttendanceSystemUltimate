@@ -3,94 +3,190 @@
 @{
     ViewData["Title"] = "Admin Login";
 }
+
 <style>
     body {
-        background: linear-gradient(135deg, #0a0a0a 0%, #1d1d1d 60%, #3a3a3a 100%);
-        font-family: "Segoe UI", sans-serif;
-        min-height: 100vh;
-        padding-top: 40px;
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(rgba(0, 100, 0, 0.6), rgba(144, 238, 144, 0.6)), url('/image/cdm.jpg') no-repeat center center fixed;
+        background-size: cover;
     }
 
-    .admin-card {
-        background: rgba(20, 20, 20, 0.95);
-        border-radius: 12px;
-        padding: 35px;
-        max-width: 420px;
-        margin: auto;
-        border: 2px solid #d4af37; /* gold border */
-        box-shadow: 0 0 25px rgba(0,0,0,0.5);
+    /* ✅ Main container */
+    .login-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100%;
+        padding: 20px;
     }
 
-    h2 {
-        color: #d4af37;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        margin-bottom: 20px;
-        text-shadow: 0 0 8px rgba(212,175,55,0.4);
+    /* ✅ Two-column login box */
+    .login-box {
+        display: flex;
+        flex-direction: row;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+        width: 60%;
+        max-width: 750px;
+        min-height: 400px;
+        overflow: hidden;
     }
 
-    label {
-        font-weight: 600;
-        color: #f5f5f5;
+    /* ✅ LEFT COLUMN (Welcome section) */
+    .left-column {
+        flex: 1;
+        background: linear-gradient(rgba(46, 125, 50, 0.8), rgba(183, 240, 180, 0.8)), url('/image/admin-bg.jpg') no-repeat center center;
+        background-size: cover;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 30px;
     }
+
+        .left-column h1 {
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+        }
+
+        .left-column p {
+            font-size: 15px;
+            max-width: 280px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+        }
+
+        .left-column img {
+            width: 150px;
+            height: auto;
+            margin-top: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+            .left-column img:hover {
+                transform: scale(1.05);
+            }
+
+    /* ✅ RIGHT COLUMN (Login Form) */
+    .right-column {
+        flex: 1;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+        .right-column h2 {
+            color: #1b5e20;
+            margin-bottom: 25px;
+            font-weight: 600;
+            font-size: 22px;
+        }
+
+    .form-group {
+        text-align: left;
+        margin-bottom: 15px;
+    }
+
+        .form-group label {
+            font-weight: 600;
+            color: #333;
+            display: block;
+            margin-bottom: 5px;
+        }
 
     .form-control {
-        background-color: #2a2a2a;
-        border: 1px solid #555;
-        color: #f5f5f5;
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
         border-radius: 8px;
-        transition: 0.2s;
+        font-size: 15px;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        color: #333;
     }
 
         .form-control:focus {
-            border-color: #d4af37;
-            box-shadow: 0 0 8px rgba(212,175,55,0.6);
+            border-color: #28a745;
+            box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
         }
 
-    .btn-dark {
-        background-color: #d4af37 !important; /* gold button */
-        border: none !important;
-        color: #000;
-        font-weight: 700;
-        letter-spacing: 1px;
+    .btn-login {
+        background-color: #2e7d32;
+        color: white;
+        border: none;
+        padding: 10px;
+        width: 100%;
         border-radius: 8px;
-        transition: 0.2s;
+        font-size: 16px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: background-color 0.3s ease, transform 0.2s ease;
     }
 
-        .btn-dark:hover {
-            background-color: #b9982c !important;
-            transform: scale(1.01);
+        .btn-login:hover {
+            background-color: #1b5e20;
+            transform: translateY(-2px);
         }
 
     .text-danger {
-        color: #ff6b6b !important;
+        margin-top: 10px;
+        color: #d32f2f;
+        font-weight: 500;
+    }
+
+    /* ✅ Responsive (mobile) */
+    @@media (max-width: 768px) {
+        .login-box {
+            flex-direction: column;
+            width: 90%;
+        }
+
+        .left-column {
+            display: none;
+        }
     }
 </style>
 
-
-<h2 class="text-center">Admin Login</h2>
-
-<div class="admin-card">
-    <form method="post">
-        <div class="form-group mb-3">
-            <label>Username</label>
-            <input asp-for="Input.Username" class="form-control" />
+<div class="login-container">
+    <div class="login-box">
+        <!-- LEFT COLUMN -->
+        <div class="left-column">
+            <h1>Welcome, Admin!</h1>
+            <p>Manage the attendance system efficiently and securely.</p>
+            <img src="/image/admin-removebg-preview.png" alt="Admin Illustration" />
         </div>
 
-        <div class="form-group mb-3">
-            <label>Password</label>
-            <input asp-for="Input.Password" type="password" class="form-control" />
+        <!-- RIGHT COLUMN -->
+        <div class="right-column">
+            <h2>Admin Login</h2>
+
+            <form method="post">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input asp-for="Input.Username" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input asp-for="Input.Password" type="password" class="form-control" />
+                </div>
+
+                <button type="submit" class="btn-login">Login</button>
+
+                @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+                {
+                    <div class="text-danger">@Model.ErrorMessage</div>
+                }
+            </form>
         </div>
-
-        <button type="submit" class="btn btn-dark w-100">Login</button>
-
-        @if (!string.IsNullOrEmpty(Model.ErrorMessage))
-        {
-            <div class="text-danger mt-3">@Model.ErrorMessage</div>
-        }
-    </form>
+    </div>
 </div>
-
-
-

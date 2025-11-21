@@ -13,7 +13,8 @@
             <form method="get" class="d-flex search-box">
                 <input type="text" name="searchTerm" class="form-control me-2"
                        placeholder="Search student..." value="@Model.SearchTerm" />
-                <button type="submit" class="btn btn-primary">Search</button>
+                <button type="submit" class="btn btn-primary me-2">Search</button>
+                <a class="btn btn-success" href="/Students/Create">Add Student</a>
             </form>
         </div>
 
@@ -22,6 +23,7 @@
                 <tr>
                     <th>Student Number</th>
                     <th>Full Name</th>
+                    <th style="width: 200px;">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,6 +32,11 @@
                     <tr>
                         <td>@s.StudentNumber</td>
                         <td>@s.FullName</td>
+                        <td>@s.StudentId</td>
+                        <td>
+                            <a class="btn btn-warning btn-sm" href="/Students/Edit?id=@s.StudentId">Edit</a>
+                            <a class="btn btn-danger btn-sm" href="/Students/Delete?id=@s.StudentId">Delete</a>
+                        </td>
                     </tr>
                 }
             </tbody>
@@ -37,4 +44,3 @@
 
     </div>
 </div>
-
